@@ -1,0 +1,33 @@
+#Create project folder:
+
+/Users/greenbook/Desktop/springboard/Spark-AutoSales-Project/hadoopspark
+
+Run following Docker commands to create seperate containers for spark-master, spark-worker ,namenode and datanode. for our project one worker node setup will do.
+
+1. create docker network
+docker network create -d bridge hadoopspark
+
+2. docker container for spark-master
+docker run --name spark-master --hostname sparkmaster --network=hadoopspark -v "/Users/greenbook/Desktop/springboard/Spark-AutoSales-Project/hadoopspark:/opt/hadoopspark" -p 8090:8080 -p 7077:7077 -d bde2020/spark-master:3.0.1-hadoop3.2
+
+3.docker container for spark-woker
+docker run --name spark-worker-1 --network=hadoopspark -p 8081:8081 -e "SPARK_MASTER=sparkmaster:7077" -d bde2020/spark-worker:3.0.1-hadoop3.2
+
+# not required for ref
+docker run --name spark-worker-2 --network=hadoopspark -p 8082:8081 -e "SPARK_MASTER=sparkmaster:7077" -d bde2020/spark-worker:3.0.1-hadoop3.2
+
+4. docker container for namenode
+docker run --name namenode --network=hadoopspark -v "/Users/greenbook/Desktop/springboard/Spark-AutoSales-Project/hadoopspark:/opt/hadoopspark" -e "CORE_CONF_fs_defaultFS=hdfs://namenode:9000" -e "CLUSTER_NAME=hadooptest" -p 9870:9870 -p 9000:9000 -d bde2020/hadoop-namenode
+
+5. docker container for datanode
+docker run --name datanode --network=hadoopspark -e "CORE_CONF_fs_defaultFS=hdfs://namenode:9000" -d bde2020/hadoop-datanode
+
+6. verify all docker containers are healthy and running. if any issue exec into container and check logs using docker logs command.
+
+
+
+how to submit job:
+./spark-submit --master spark://172.23.0.2:7077 /opt/hadoopspark/autoinc_spark.py
+
+
+172.23.0.2
