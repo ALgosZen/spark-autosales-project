@@ -30,13 +30,20 @@ docker run --name datanode --network=hadoopspark -e "CORE_CONF_fs_defaultFS=hdfs
 
 ```
 
+verify docker containers are up and running 
 
-![Alt text](/images/running-job.png?raw=true "screenshot")
+![Alt text](/images/container-status.png?raw=true "screenshot")
 
 
+edit sparkcontext to update with namenode server and port
 
+![Alt text](/images/namenode.png?raw=true "screenshot")
 
 how to submit job:
 ./spark-submit --master spark://172.23.0.2:7077 /opt/hadoopspark/autoinc_spark.py
 
+![Alt text](/images/running-job.png?raw=true "screenshot")
 
+output file 
+
+![Alt text](/images/output.png?raw=true "screenshot")
