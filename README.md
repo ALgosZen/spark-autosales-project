@@ -56,6 +56,10 @@ output file
 
 ![Alt text](/images/output.png?raw=true "screenshot")
 
+screenshot of spark master UI
+
+![Alt text](/images/spark-master.png?raw=true "screenshot")
+
 
 Stop all running containers
 
