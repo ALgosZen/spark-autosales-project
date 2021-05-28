@@ -47,3 +47,21 @@ how to submit job:
 output file 
 
 ![Alt text](/images/output.png?raw=true "screenshot")
+
+
+Stop all running containers
+
+```
+docker stop $(docker ps -aq)
+```
+
+Remove all containers
+```
+docker rm $(docker ps -aq)
+```
+Remove all images
+
+```
+docker rmi $(docker images -q)
+```
+wrap up
