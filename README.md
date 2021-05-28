@@ -34,8 +34,16 @@ verify docker containers are up and running
 
 ![Alt text](/images/container-status.png?raw=true "screenshot")
 
+Verify volume mount has source file, config and data csv file. create sparkmini directory on hdfs and put csv file on the file system.
 
-edit sparkcontext to update with namenode server and port
+```
+hdfs dfs -ls /
+hdfs dfs -mkdir /sparkmini
+hdfs dfs -put data.csv /sparkmini
+```
+
+
+edit sparkcontext to update with namenode server and port and csv file path on hdfs.
 
 ![Alt text](/images/namenode.png?raw=true "screenshot")
 
