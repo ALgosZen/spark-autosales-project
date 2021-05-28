@@ -31,7 +31,7 @@ docker run --name datanode --network=hadoopspark -e "CORE_CONF_fs_defaultFS=hdfs
 ```
 
 
-![Alt text](/images/Screen Shot 2021-05-28 at 3.44.20 AM.PNG?raw=true "screenshot")
+![Alt text](/images/Screen Shot 2021-05-28 at 3.44.20 AM.png?raw=true "screenshot")
 
 
 
